@@ -1,90 +1,13 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8">
-<title>폴더 트리 뷰 + 파일 미리보기</title>
-<style>
-  body {
-    font-family: "Pretendard", sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    transition: background 0.3s, color 0.3s;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-  }
-  :root {
-    --bg: #f7f7f7;
-    --text: #222;
-    --folder: #ffb300;
-  }
-  .dark {
-    --bg: #1e1e1e;
-    --text: #e0e0e0;
-    --folder: #ffd95a;
-  }
-  #topbar {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-  }
-  button {
-    background: none; border: 1px solid var(--text);
-    color: var(--text); padding: 4px 8px; cursor: pointer;
-    border-radius: 6px;
-  }
-  #main {
-    flex: 1;
-    display: flex;
-    overflow: hidden;
-  }
-  #treeContainer {
-    width: 25%;
-    /*border-right: 1px solid #ccc;*/
-    overflow-y: auto;
-    padding: 20px;
-    min-width: 7.5%;
-    max-width: 75%;
-  }
-  #resizer {
-    width: 5px;
-    cursor: col-resize;
-    background: #ccc;
-    transition: background 0.2s;
-  }
-  #resizer:hover { background: #adadad; }
-  #preview {
-    flex: 1;
-    padding: 20px;
-    overflow-y: auto;
-    white-space: pre-wrap;
-    word-break: break-word;
-    font-family: "JetBrains Mono", monospace;
-  }
-  .folder, .file {
-    display: flex; align-items: center; cursor: pointer; margin: 2px 0;
-  }
-  .icon { width: 20px; text-align: center; margin-right: 4px; }
-  .children {
-    overflow: hidden; max-height: 0; margin-left: 20px;
-    transition: max-height 0.25s ease;
-  }
-  .open > .children { max-height: 500px; }
-</style>
-</head>
-<body>
-  <div id="topbar">
-    <button id="openFolder">📁 폴더 열기</button>
-    <button id="toggleDark">🌙</button>
-  </div>
-  <div id="main">
-    <div id="treeContainer"><div id="tree" class="tree"></div></div>
-    <div id="resizer"></div>
-    <div id="preview"><em>파일을 선택하면 내용이 여기에 표시됩니다.</em></div>
-  </div>
+<div id="topbar">
+  <button id="openFolder">📁 폴더 열기</button>
+  <button id="toggleDark">🌙</button>
+</div>
+<div id="main">
+  <div id="treeContainer"><div id="tree" class="tree"></div></div>
+  <div id="resizer"></div>
+  <div id="preview"><em>파일을 선택하면 내용이 여기에 표시됩니다.</em></div>
+</div>
 
-<script>
 // 🔹 폴더 구조 읽기
 async function readDirectory(dirHandle) {
   const items = [];
@@ -195,7 +118,3 @@ window.addEventListener('mouseup', () => {
     document.body.style.cursor = 'default';
   }
 });
-
-</script>
-</body>
-</html>
